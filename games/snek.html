@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Snek – Stupid Rip-Offs Made by AI</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body class="game-page">
+  <a class="back" href="../index.html">◀ Back to rip-offs</a>
+  <h1>Snek 🐍</h1>
+  <canvas id="c" width="400" height="400"></canvas>
+  <div class="game-info">
+    Score: <b id="score">0</b><br>
+    Arrow keys / WASD, or swipe on mobile. Press space or tap to restart.
+  </div>
+
+  <script>
+    const canvas = document.getElementById('c');
+    const ctx = canvas.getContext('2d');
+    const scoreEl = document.getElementById('score');
+    const SIZE = 20, CELLS = canvas.width / SIZE;
+
+    let snake, dir, nextDir, food, score, dead, timer;
+
+    function reset() {
+      snake = [{ x: 10, y: 10 }];
+      dir = { x: 1, y: 0 };
+      nextDir = dir;
+      score = 0;
+      dead = false;
+      scoreEl.textContent = 0;
+      placeFood();
+      clearInterval(timer);
+      timer = setInterval(tick, 110);
+    }
+
+    function placeFood() {
+      do {
+        food = { x: Math.floor(Math.random() * CELLS), y: Math.floor(Math.random() * CELLS) };
+      } while (snake.some(s => s.x === food.x && s.y === food.y));
+    }
+
+    function tick() {
+      dir = nextDir;
+      const head = { x: snake[0].x + dir.x, y: snake[0].y + dir.y };
+      const hitWall = head.x < 0 || head.y < 0 || head.x >= CELLS || head.y >= CELLS;
+      const hitSelf = snake.some(s => s.x === head.x && s.y === head.y);
+      if (hitWall || hitSelf) { dead = true; clearInterval(timer); draw(); return; }
+
+      snake.unshift(head);
+      if (head.x === food.x && head.y === food.y) {
+        score++; scoreEl.textContent = score; placeFood();
+      } else {
+        snake.pop();
+      }
+      draw();
+    }
+
+    function draw() {
+      ctx.fillStyle = '#fff';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = '#ff3b6b';
+      ctx.fillRect(food.x * SIZE, food.y * SIZE, SIZE, SIZE);
+      snake.forEach((s, i) => {
+        ctx.fillStyle = i === 0 ? '#111' : '#2b59ff';
+        ctx.fillRect(s.x * SIZE + 1, s.y * SIZE + 1, SIZE - 2, SIZE - 2);
+      });
+      if (dead) {
+        ctx.fillStyle = 'rgba(0,0,0,.7)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = '#ffe94d';
+        ctx.font = 'bold 32px Comic Sans MS, sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText('U DIED LOL', canvas.width / 2, canvas.height / 2);
+        ctx.font = '18px Comic Sans MS, sans-serif';
+        ctx.fillText('space / tap to try again', canvas.width / 2, canvas.height / 2 + 32);
+      }
+    }
+
+    function turn(x, y) {
+      if (x === -dir.x && y === -dir.y) return; // no reversing into yourself
+      nextDir = { x, y };
+    }
+
+    document.addEventListener('keydown', e => {
+      const k = e.key.toLowerCase();
+      if (['arrowup', 'w'].includes(k)) turn(0, -1);
+      if (['arrowdown', 's'].includes(k)) turn(0, 1);
+      if (['arrowleft', 'a'].includes(k)) turn(-1, 0);
+      if (['arrowright', 'd'].includes(k)) turn(1, 0);
+      if (k === ' ' && dead) reset();
+      if (k.startsWith('arrow') || k === ' ') e.preventDefault();
+    });
+
+    // Swipe controls for phones
+    let tx, ty;
+    canvas.addEventListener('touchstart', e => {
+      tx = e.touches[0].clientX; ty = e.touches[0].clientY;
+      if (dead) reset();
+    });
+    canvas.addEventListener('touchend', e => {
+      const dx = e.changedTouches[0].clientX - tx;
+      const dy = e.changedTouches[0].clientY - ty;
+      if (Math.max(Math.abs(dx), Math.abs(dy)) < 20) return;
+      Math.abs(dx) > Math.abs(dy) ? turn(Math.sign(dx), 0) : turn(0, Math.sign(dy));
+    });
+
+    reset();
+  </script>
+</body>
+</html>

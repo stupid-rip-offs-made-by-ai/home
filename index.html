@@ -8,7 +8,6 @@
 </head>
 <body>
   <header>
-    <div class="sticker">100% NOT ORIGINAL</div>
     <h1>Stupid Rip-Offs<br><span>Made by AI</span></h1>
     <p class="tagline">Games you've definitely played before. Just worse.</p>
     <input id="search" type="search" placeholder="Search the knockoffs..." aria-label="Search games">
@@ -16,7 +15,7 @@
 
   <main>
     <div id="grid" class="grid"></div>
-    <p id="empty" class="empty" hidden>No rip-offs found. Somehow.</p>
+    <p id="empty" class="empty" hidden>No rip-offs here yet. Check back soon.</p>
   </main>
 
   <footer>
@@ -35,7 +34,7 @@
         (g.title + ' ' + g.ripoffOf + ' ' + g.description).toLowerCase().includes(q)
       );
       grid.innerHTML = list.map(g => `
-        <a class="card" href="games/${g.file}">
+        <a class="card" href="${g.url || "games/" + g.file}">
           <div class="emoji">${g.emoji || '🎮'}</div>
           <h2>${g.title || 'Untitled Rip-Off'}</h2>
           <p class="ripoff">totally not ${g.ripoffOf || 'a real game'}</p>

@@ -21,4 +21,5 @@ const GAMES = [
   { title: "CraftMine",         ripoffOf: "Minecraft",           url: ORG + "craftmine/",         emoji: "⛏️", description: "Mine blocks. Craft stuff. Name it backwards. Genius." },
   { title: "Chess Chess",       ripoffOf: "Chess",               url: ORG + "chess-chess/",       emoji: "♟️", description: "Pass-and-play chess. Twice the chess, somehow." },
   { title: "Fortday",           ripoffOf: "Fortnite",            url: ORG + "fortday/",           emoji: "🔫", description: "Defeat enemies. Blow up yourself, if you want" },
+  { title: "Beta Gamees",       ripoffOf: "N/A",                 url: ORG + "beta/",              emoji: "🔓", description: "Go to the Beta Games site" },
 ];

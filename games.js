@@ -10,7 +10,7 @@ const ORG = "https://stupid-rip-offs-made-by-ai.github.io/";
 const GAMES = [
   { title: "Bario Kart",        ripoffOf: "Mario Kart",          url: ORG + "bario-kart/",        emoji: "🏎️", description: "Hold right. Go fast. Pray." },
   { title: "Mirio",             ripoffOf: "Super Mario",         url: ORG + "mirio/",             emoji: "🍄", description: "The Cooler Edition. Jump on things that deserve it." },
-  { title: "Man-Pac",           ripoffOf: "Pac-Man",             url: ORG + "man-pac/",           emoji: "👻", description: "Pic-Man: The Final Fix. Eat dots, flee ghosts, question everything." },
+  { title: "Man-Pac",           ripoffOf: "Pac-Man",             url: ORG + "Man-Pac/",           emoji: "👻", description: "Pic-Man: The Final Fix. Eat dots, flee ghosts, question everything." },
   { title: "Kurbiy",            ripoffOf: "Kirby",               url: ORG + "Kurbiy/",            emoji: "🌸", description: "Puff Quest. A round pink guy inhales his problems." },
   { title: "Shape Dash",        ripoffOf: "Geometry Dash",       url: ORG + "shape-dash/",        emoji: "🔷", description: "Tap to jump. Die on the first spike. Repeat forever." },
   { title: "Filled In Knight",  ripoffOf: "Hollow Knight",       url: ORG + "filled-in-knight/",  emoji: "🗡️", description: "Hollow Depths, but he's not hollow. Totally different." },

@@ -8,7 +8,7 @@
 const ORG = "https://stupid-rip-offs-made-by-ai.github.io/";
 
 const GAMES = [
-  { title: "Bario Kart",        ripoffOf: "Mario Kart",          url: ORG + "bario-kart/",        emoji: "🏎️", description: "Hold right. Go fast. Pray." },
+  { title: "Turbo Karts",       ripoffOf: "Mario Kart",          url: ORG + "turbo-karts/",       emoji: "💨", description: "Race Against Bots, repeat forever." },
   { title: "Mirio",             ripoffOf: "Super Mario",         url: ORG + "mirio/",             emoji: "🍄", description: "The Cooler Edition. Jump on things that deserve it." },
   { title: "Man-Pac",           ripoffOf: "Pac-Man",             url: ORG + "Man-Pac/",           emoji: "👻", description: "Pic-Man: The Final Fix. Eat dots, flee ghosts, question everything." },
   { title: "Kurbiy",            ripoffOf: "Kirby",               url: ORG + "Kurbiy/",            emoji: "🌸", description: "Puff Quest. A round pink guy inhales his problems." },

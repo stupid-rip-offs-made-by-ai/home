@@ -24,5 +24,6 @@ const GAMES = [
   { title: "Railyard Rush",     ripoffOf: "Subway Surfers",      url: ORG + "railyard-rush/",     emoji: "🛤️", description: "Jump on Trains and Escape the Guard, or get caught." },
   { title: "Portal Lab 7",      ripoffOf: "Portal",              url: ORG + "portal-lab-7/",      emoji: "🕳️", description: "Shoot Portals Everywhere, and get revenge." },
   { title: "Orbital Forge",     ripoffOf: "Kerbal Space Program",url: ORG + "orbital-forge/",     emoji: "🚀", description: "Launch Rockets, and blow them up when something goes wrong." },
+  { title: "City Skylimes",     ripoffOf: "City Skylines",       url: ORG + "city-skylimes/",     emoji: "🏢", description: "Build Successful Cities, or make terrible ones." },
   { title: "Beta Games",        ripoffOf: "N/A",                 url: ORG + "beta/",              emoji: "🔓", description: "Go to the Beta Games site" },
 ];
